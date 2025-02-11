@@ -6,6 +6,9 @@ import env from "./config/validateEnv";
 import allowedOrigins from "./config/allowedOrigins";
 import dbConnection from "./config/dbConnection";
 import errorMiddleware from "./middlewares/error";
+import quizRouter from "./routes/quiz";
+import employerRouter from "./routes/employer";
+import announcementRouter from "./routes/announcement";
 
 const app: Express = express();
 const port = env.PORT || 5000;
@@ -32,6 +35,11 @@ if (env.isDevelopment) {
 app.get("/", (req: Request, res: Response) => {
   res.json({ message: "Welcome to the Anyware Software Task API" });
 });
+
+// Routes
+app.use("/api/v1/quizzes", quizRouter);
+app.use("/api/v1/employers", employerRouter);
+app.use("/api/v1/announcements", announcementRouter);
 
 // Global error handler
 app.use(errorMiddleware);
