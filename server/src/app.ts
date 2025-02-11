@@ -5,6 +5,7 @@ import morgan from "morgan";
 import env from "./config/validateEnv";
 import allowedOrigins from "./config/allowedOrigins";
 import dbConnection from "./config/dbConnection";
+import errorMiddleware from "./middlewares/error";
 
 const app: Express = express();
 const port = env.PORT || 5000;
@@ -33,14 +34,9 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 // Global error handler
-app.use(
-  (err: Error, req: Request, res: Response, next: express.NextFunction) => {
-    console.error(err.stack);
-    res.status(500).json({ message: "Something went wrong!" });
-  }
-);
+app.use(errorMiddleware);
 
-void dbConnection()
+void dbConnection();
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
