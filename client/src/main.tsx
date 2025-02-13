@@ -17,7 +17,7 @@ const theme = createTheme({
       main: "#1976d2",
     },
     secondary: {
-      main: "#dc004e",
+      main: "hsl(25 5.3% 44.7%)",
     },
   },
 });
