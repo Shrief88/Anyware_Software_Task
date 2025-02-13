@@ -10,7 +10,7 @@ enum Gender {
   Female = 'Female'
 }
 
-export interface IEmployer extends mongoose.Document {
+export interface IEmployee extends mongoose.Document {
   firstName: string;
   lastName: string;
   position: Position;
@@ -20,7 +20,7 @@ export interface IEmployer extends mongoose.Document {
   createdAt: Date;
 }
 
-const employerSchema = new Schema<IEmployer>({
+const employerSchema = new Schema<IEmployee>({
   firstName: {
     type: String,
     required: true,
@@ -54,7 +54,7 @@ const employerSchema = new Schema<IEmployer>({
   timestamps: true
 });
 
-export const EmployerModel = mongoose.model<IEmployer>(
-  "Employer",
+export const EmployeeModel = mongoose.model<IEmployee>(
+  "Employee",
   employerSchema
 );

@@ -7,8 +7,8 @@ import allowedOrigins from "./config/allowedOrigins";
 import dbConnection from "./config/dbConnection";
 import errorMiddleware from "./middlewares/error";
 import quizRouter from "./routes/quiz";
-import employerRouter from "./routes/employer";
 import announcementRouter from "./routes/announcement";
+import employeeRouter from "./routes/employee";
 
 const app: Express = express();
 const port = env.PORT || 5000;
@@ -38,7 +38,7 @@ app.get("/", (req: Request, res: Response) => {
 
 // Routes
 app.use("/api/v1/quizzes", quizRouter);
-app.use("/api/v1/employers", employerRouter);
+app.use("/api/v1/employees", employeeRouter);
 app.use("/api/v1/announcements", announcementRouter);
 
 // Global error handler

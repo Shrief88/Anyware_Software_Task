@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 export interface IAnnouncement extends mongoose.Document {
   content: string;
   about: string;
-  employer: Schema.Types.ObjectId;
+  employee: Schema.Types.ObjectId;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -21,10 +21,10 @@ const announcementSchema = new Schema<IAnnouncement>(
       type: String,
       required: true,
     },
-    employer: {
+    employee: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: "Employer",
+      ref: "Employee",
     },
   },
   {

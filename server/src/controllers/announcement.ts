@@ -9,7 +9,7 @@ export const getAllAnnouncements = async (
   next: NextFunction
 ) => {
   try {
-    const announcements = await AnnouncementModel.find().populate("employer");
+    const announcements = await AnnouncementModel.find().populate("employee");
     res.status(200).json(announcements);
   } catch (error) {
     next(error);
@@ -24,7 +24,7 @@ export const getAnnouncementById = async (
   try {
     const announcement = await AnnouncementModel.findById(
       req.params.id
-    ).populate("employer");
+    ).populate("employee");
     if (!announcement) throw createHttpError(404, "Announcement not found");
     res.status(200).json(announcement);
   } catch (error) {
@@ -56,7 +56,7 @@ export const updateAnnouncement = async (
       req.params.id,
       req.body,
       { new: true }
-    );
+    ).populate("employee");
     if (!announcement) throw createHttpError(404, "Announcement not found");
     res.status(200).json(announcement);
   } catch (error) {

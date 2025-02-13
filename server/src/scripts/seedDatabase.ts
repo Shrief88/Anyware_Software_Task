@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { EmployerModel } from "../models/employer";
+import { EmployeeModel } from "../models/employee";
 import { AnnouncementModel } from "../models/announcement";
 import { QuizModel } from "../models/quiz";
 import env from "../config/validateEnv";
@@ -12,14 +12,14 @@ const seedDatabase = async () => {
 
     // Clear existing data
     await Promise.all([
-      EmployerModel.deleteMany({}),
+      EmployeeModel.deleteMany({}),
       AnnouncementModel.deleteMany({}),
       QuizModel.deleteMany({}),
     ]);
     console.log("Cleared existing data");
 
     // Create employers
-    const employers = await EmployerModel.create([
+    const employees = await EmployeeModel.create([
       {
         firstName: "John",
         lastName: "Doe",
@@ -42,29 +42,29 @@ const seedDatabase = async () => {
         gender: "Male",
       },
     ]);
-    console.log("Created employers");
+    console.log("Created employees");
 
     // Create announcements
     await AnnouncementModel.create([
       {
         content: "Welcome to our new learning platform! We are excited to introduce you to our state-of-the-art educational system designed to enhance your learning experience. The platform features interactive courses, real-time progress tracking, and personalized learning paths. Take some time to explore the various features and don't hesitate to reach out if you need any assistance.",
         about: "Platform Launch",
-        employer: employers[0]._id,
+        employee: employees[0]._id,
       },
       {
         content: "We are thrilled to announce the launch of new web development courses! Our curriculum now includes comprehensive modules on React.js, Node.js, and MongoDB. These courses are designed with hands-on projects and real-world applications. Early enrollment is now open with special discounts for existing students. Check out the course catalog for detailed syllabus and learning outcomes.",
         about: "Course Update",
-        employer: employers[0]._id,
+        employee: employees[0]._id,
       },
       {
         content: "Important notice regarding system maintenance: Our platform will undergo scheduled maintenance this weekend to improve performance and add new features. The maintenance window is scheduled for Saturday, 15th February, from 2 AM to 6 AM EST. During this time, the platform will be temporarily unavailable. We apologize for any inconvenience and appreciate your understanding as we work to enhance your learning experience.",
         about: "Maintenance",
-        employer: employers[1]._id,
+        employee: employees[1]._id,
       },
       {
         content: "Exciting news! We're organizing a Web Development Workshop next month. This hands-on workshop will cover the latest trends in frontend and backend development, including modern JavaScript frameworks, API design, and deployment strategies. The workshop will be conducted by industry experts with years of practical experience. Limited seats available - register now to secure your spot!",
         about: "Workshop Announcement",
-        employer: employers[2]._id,
+        employee: employees[2]._id,
       },
     ]);
     console.log("Created announcements");
