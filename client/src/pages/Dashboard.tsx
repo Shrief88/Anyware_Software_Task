@@ -1,15 +1,25 @@
 import { Box, Button, Grid2, Paper, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import { axiosClient } from "../api/axios";
-import { IAnnouncement } from "../interfaces";
+import { IAnnouncement, IQuiz } from "../interfaces";
 import Announcement from "../components/Announcement";
+import Quiz from "../components/Quiz";
 
 const Dashboard = () => {
-  const { data: announcementData, isLoading } = useQuery<IAnnouncement[]>({
-    queryKey: ["announcement"],
+  const { data: announcementData, isLoading: isLoadingAnnouncements } =
+    useQuery<IAnnouncement[]>({
+      queryKey: ["announcements"],
+      queryFn: async () => {
+        const announcement = await axiosClient.get("/announcements");
+        return announcement.data;
+      },
+    });
+
+  const { data: quizData, isLoading: isLoadingQuizzes } = useQuery<IQuiz[]>({
+    queryKey: ["quizzes"],
     queryFn: async () => {
-      const announcement = await axiosClient.get("/announcements");
-      return announcement.data;
+      const quiz = await axiosClient.get("/quizzes");
+      return quiz.data;
     },
   });
 
@@ -95,19 +105,19 @@ const Dashboard = () => {
                     mt: 2,
                   }}
                 >
-                  {isLoading
+                  {isLoadingAnnouncements
                     ? [1, 2, 3].map((item) => (
                         <Announcement
                           key={item}
                           announcement={{} as IAnnouncement}
-                          isLoading={isLoading}
+                          isLoading={isLoadingAnnouncements}
                         />
                       ))
                     : announcementData?.map((announcement) => (
                         <Announcement
                           key={announcement._id}
                           announcement={announcement}
-                          isLoading={isLoading}
+                          isLoading={isLoadingAnnouncements}
                         />
                       ))}
                 </Box>
@@ -115,7 +125,7 @@ const Dashboard = () => {
             </Box>
           </Paper>
         </Grid2>
-        <Grid2 size={{ xs: 12, lg: 3, }}>
+        <Grid2 size={{ xs: 12, lg: 3 }}>
           <Paper
             elevation={4}
             sx={{
@@ -128,7 +138,14 @@ const Dashboard = () => {
               borderRadius: 2,
             }}
           >
-            <Box>
+            <Box
+              sx={{
+                display: "flex",
+                gap: 2,
+                flexDirection: "column",
+                width: "100%",
+              }}
+            >
               <Box>
                 <Typography variant="h6" fontWeight={700}>
                   What is due
@@ -136,6 +153,23 @@ const Dashboard = () => {
                 <Typography variant="body2" color="text.secondary">
                   Exams are due soon
                 </Typography>
+              </Box>
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                {isLoadingQuizzes
+                  ? [1, 2, 3].map((item) => (
+                      <Quiz
+                        key={item}
+                        quiz={{} as IQuiz}
+                        isLoading={isLoadingQuizzes}
+                      />
+                    ))
+                  : quizData?.map((quiz) => (
+                      <Quiz
+                        key={quiz._id}
+                        quiz={quiz}
+                        isLoading={isLoadingQuizzes}
+                      />
+                    ))}
               </Box>
             </Box>
           </Paper>
