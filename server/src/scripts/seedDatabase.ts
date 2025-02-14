@@ -52,17 +52,17 @@ const seedDatabase = async () => {
         employee: employees[0]._id,
       },
       {
-        content: "We are thrilled to announce the launch of new web development courses! Our curriculum now includes comprehensive modules on React.js, Node.js, and MongoDB. These courses are designed with hands-on projects and real-world applications. Early enrollment is now open with special discounts for existing students. Check out the course catalog for detailed syllabus and learning outcomes.",
+        content: "We are thrilled to announce the launch of new web development courses! Our curriculum now includes comprehensive modules on React.js, Node.js, and MongoDB. These courses are designed with hands-on projects and real-world applications. Early enrollment is now open with special discounts for existing students.",
         about: "Course Update",
         employee: employees[0]._id,
       },
       {
-        content: "Important notice regarding system maintenance: Our platform will undergo scheduled maintenance this weekend to improve performance and add new features. The maintenance window is scheduled for Saturday, 15th February, from 2 AM to 6 AM EST. During this time, the platform will be temporarily unavailable. We apologize for any inconvenience and appreciate your understanding as we work to enhance your learning experience.",
+        content: "Important notice regarding system maintenance: Our platform will undergo scheduled maintenance this weekend to improve performance and add new features. The maintenance window is scheduled for Saturday, 15th February, from 2 AM to 6 AM EST. During this time, the platform will be temporarily unavailable.",
         about: "Maintenance",
         employee: employees[1]._id,
       },
       {
-        content: "Exciting news! We're organizing a Web Development Workshop next month. This hands-on workshop will cover the latest trends in frontend and backend development, including modern JavaScript frameworks, API design, and deployment strategies. The workshop will be conducted by industry experts with years of practical experience. Limited seats available - register now to secure your spot!",
+        content: "Exciting news! We're organizing a Web Development Workshop next month. This hands-on workshop will cover the latest trends in frontend and backend development, including modern JavaScript frameworks, API design, and deployment strategies. The workshop will be conducted by industry experts with years of practical experience.",
         about: "Workshop Announcement",
         employee: employees[2]._id,
       },

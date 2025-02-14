@@ -15,7 +15,7 @@ const Layout = () => {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", minHeight: "100vh" }}>
       <Nav
         mobileOpen={mobileOpen}
         handleDrawerToggle={handleDrawerToggle}
@@ -23,10 +23,17 @@ const Layout = () => {
       />
       <Box
         component="main"
-        sx={{ flexGrow: 1, backgroundColor: "#f5f7f9"}}
+        sx={{
+          flexGrow: 1,
+          backgroundColor: "#f5f7f9",
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
         <Header handleDrawerToggle={handleDrawerToggle} isMobile={isMobile} />
-        <Outlet />
+        <Box flexGrow={1}>
+          <Outlet />
+        </Box>
       </Box>
     </Box>
   );
