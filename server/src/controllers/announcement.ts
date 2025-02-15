@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import createHttpError from "http-errors";
 
 import { AnnouncementModel } from "../models/announcement";
+import { EmployeeModel } from "../models/employee";
 
 export const getAllAnnouncements = async (
   req: Request,
@@ -38,6 +39,10 @@ export const createAnnouncement = async (
   next: NextFunction
 ) => {
   try {
+    const { employee } = req.body;
+    const foundEmployee = await EmployeeModel.findById(employee);
+    if (!foundEmployee) throw createHttpError(404, "Employee not found");
+
     const announcement = new AnnouncementModel(req.body);
     await announcement.save();
     res.status(201).json(announcement);

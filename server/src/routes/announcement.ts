@@ -6,17 +6,39 @@ import {
   getAnnouncementById,
   updateAnnouncement,
 } from "../controllers/announcement";
+import { validate } from "../middlewares/validate";
+import {
+  createAnnouncementValidation,
+  updateAnnouncementValidation,
+  announcementIdValidation,
+} from "../validations/announcement";
 
 const announcementRouter = Router();
 
 announcementRouter.get("/", getAllAnnouncements);
 
-announcementRouter.get("/:id", getAnnouncementById);
+announcementRouter.get(
+  "/:id",
+  validate(announcementIdValidation),
+  getAnnouncementById
+);
 
-announcementRouter.post("/", createAnnouncement);
+announcementRouter.post(
+  "/",
+  validate(createAnnouncementValidation),
+  createAnnouncement
+);
 
-announcementRouter.put("/:id", updateAnnouncement);
+announcementRouter.put(
+  "/:id",
+  validate(updateAnnouncementValidation),
+  updateAnnouncement
+);
 
-announcementRouter.delete("/:id", deleteAnnouncement);
+announcementRouter.delete(
+  "/:id",
+  validate(announcementIdValidation),
+  deleteAnnouncement
+);
 
 export default announcementRouter;

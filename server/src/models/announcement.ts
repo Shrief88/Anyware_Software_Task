@@ -20,6 +20,9 @@ const announcementSchema = new Schema<IAnnouncement>(
     about: {
       type: String,
       required: true,
+      minlength: 3,
+      maxlength: 100,
+      trim: true,
     },
     employee: {
       type: Schema.Types.ObjectId,
