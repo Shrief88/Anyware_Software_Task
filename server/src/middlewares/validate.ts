@@ -11,6 +11,11 @@ export const validate = (validations: ValidationChain[]) => {
       return next();
     }
 
-    return next(createHttpError(400, { errors: errors.array() }));
+    return next(
+      createHttpError(400, {
+        errors: errors.array(),
+        message: errors.array()[0].msg,
+      })
+    );
   };
 };

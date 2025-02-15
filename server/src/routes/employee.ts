@@ -6,17 +6,24 @@ import {
   getEmployeeById,
   updateEmployee,
 } from "../controllers/employee";
+import { validate } from "../middlewares/validate";
+import {
+  createEmployeeValidation,
+  employeeIdValidation,
+  updateEmployeeValidation,
+} from "../validations/employee";
 
 const employeeRouter = Router();
 
 employeeRouter.get("/", getAllEmployees);
 
-employeeRouter.get("/:id", getEmployeeById);
+employeeRouter.get("/:id", validate(employeeIdValidation), getEmployeeById);
 
-employeeRouter.post("/", createEmployee);
+employeeRouter.post("/", validate(createEmployeeValidation), createEmployee);
 
-employeeRouter.put("/:id", updateEmployee);
+employeeRouter.put("/:id", validate(updateEmployeeValidation), updateEmployee);
 
-employeeRouter.delete("/:id", deleteEmployee);
+employeeRouter.delete("/:id", validate(employeeIdValidation), deleteEmployee);
 
 export default employeeRouter;
+  
