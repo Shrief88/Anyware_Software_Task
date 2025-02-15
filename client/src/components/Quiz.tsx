@@ -10,7 +10,12 @@ const Quiz = ({ quiz, isLoading }: Props) => {
   return (
     <Box sx={{ display: "flex", gap: 0.5, flexDirection: "column" }}>
       {isLoading ? (
-        <Skeleton variant="rectangular" width={100} height={10} />
+        <Skeleton
+          data-testid="avatar-skeleton"
+          variant="rectangular"
+          width={100}
+          height={10}
+        />
       ) : (
         <Typography sx={{ fontSize: 14 }} variant="body1" fontWeight={700}>
           {quiz.title}
@@ -25,7 +30,12 @@ const Quiz = ({ quiz, isLoading }: Props) => {
         </Grid2>
         <Grid2 size={{ xs: 9, md: 10, lg: 9 }}>
           {isLoading ? (
-            <Skeleton variant="rectangular" width={100} height={10} />
+            <Skeleton
+              data-testid="course-skeleton"
+              variant="rectangular"
+              width={100}
+              height={10}
+            />
           ) : (
             <Typography variant="body2" color="text.secondary">
               {quiz.course}
@@ -41,7 +51,12 @@ const Quiz = ({ quiz, isLoading }: Props) => {
         </Grid2>
         <Grid2 size={{ xs: 9, md: 10, lg: 9 }}>
           {isLoading ? (
-            <Skeleton variant="rectangular" width={100} height={10} />
+            <Skeleton
+              data-testid="topic-skeleton"
+              variant="rectangular"
+              width={100}
+              height={10}
+            />
           ) : (
             <Typography variant="body2" color="text.secondary">
               {quiz.topic}

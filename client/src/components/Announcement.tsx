@@ -18,7 +18,12 @@ const Announcement = ({ announcement, isLoading }: Props) => {
           }}
         >
           {isLoading ? (
-            <Skeleton variant="circular" width={40} height={40} />
+            <Skeleton
+              data-testid="avatar-skeleton"
+              variant="circular"
+              width={40}
+              height={40}
+            />
           ) : (
             <Avatar
               alt={
@@ -34,12 +39,18 @@ const Announcement = ({ announcement, isLoading }: Props) => {
             {isLoading ? (
               <>
                 <Skeleton
+                  data-testid="name-skeleton"
                   variant="rectangular"
                   width={100}
                   height={10}
                   sx={{ mb: 1 }}
                 />
-                <Skeleton variant="rectangular" width={100} height={10} />
+                <Skeleton
+                  data-testid="subtitle-skeleton"
+                  variant="rectangular"
+                  width={100}
+                  height={10}
+                />
               </>
             ) : (
               <>

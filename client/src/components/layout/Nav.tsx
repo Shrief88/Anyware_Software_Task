@@ -53,6 +53,7 @@ const Nav = ({ mobileOpen, handleDrawerToggle, isMobile }: Props) => {
       <List>
         {menuItems.map((item) => (
           <ListItem
+            data-testid={`nav-${item.text}`}
             component="div"
             key={item.text}
             sx={{
