@@ -10,6 +10,19 @@ vi.mock('../../api/axios', () => ({
   }
 }))
 
+// Mock the useQuery hook
+vi.mock(import("@tanstack/react-query"), async (importOriginal) => {
+  const actual = await importOriginal()
+  return {
+    ...actual,
+    useQuery: vi.fn().mockReturnValue({
+      data: [],
+    })
+  
+  }
+})
+
+
 describe('Dashboard Component', () => {
   // Create a new QueryClient for each test
   const queryClient = new QueryClient({
