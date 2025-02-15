@@ -55,6 +55,7 @@ const Announcement = ({ announcement, isLoading }: Props) => {
             ) : (
               <>
                 <Typography variant="body1" fontWeight={700}>
+                  {announcement.employee.gender === "Male" ? "Mr. " : "Ms. "}
                   {announcement.employee.firstName +
                     " " +
                     announcement.employee.lastName}

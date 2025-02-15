@@ -33,7 +33,7 @@ describe("Announcement Component", () => {
 
   it("renders announcement content when isLoading is false", () => {
     render(<Announcement announcement={mockAnnouncement} isLoading={false} />);
-    expect(screen.getByText("John Doe")).toBeInTheDocument();
+    expect(screen.getByText("Mr. John Doe")).toBeInTheDocument();
     expect(screen.getByText("Test announcement content")).toBeInTheDocument();
     expect(screen.getByText("Test Subject")).toBeInTheDocument();
   });

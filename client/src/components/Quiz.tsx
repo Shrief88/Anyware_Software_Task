@@ -75,7 +75,7 @@ const Quiz = ({ quiz, isLoading }: Props) => {
             <Skeleton variant="rectangular" width={100} height={10} />
           ) : (
             <Typography variant="body2" color="text.secondary">
-              {quiz.due_to_day} - {quiz.due_to_hour}
+              {quiz.due_to_day} - {quiz.due_to_hour} {Number(quiz.due_to_hour.split(":")[0]) > 12 ? "PM" : "AM"}
             </Typography>
           )}
         </Grid2>
