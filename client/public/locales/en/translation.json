@@ -1,0 +1,32 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "schedule": "Schedule",
+    "courses": "Courses",
+    "gradebook": "Gradebook",
+    "performance": "Performance",
+    "announcement": "Announcement",
+    "logout": "Logout"
+  },
+  "dashboard": {
+    "examsTime": "EXAMS TIME",
+    "announcements": "Announcements",
+    "whatIsDue": "What is due",
+    "quizTitle": "Quiz: {{subject}}",
+    "courseName": "Course: {{name}}",
+    "topic": "Topic: {{name}}",
+    "dueDate": "Due to: {{date}}"
+  },
+  "auth": {
+    "login": "Login",
+    "logout": "Logout",
+    "email": "Email",
+    "password": "Password"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel"
+  }
+}

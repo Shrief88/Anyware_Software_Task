@@ -1,4 +1,5 @@
 import { Box, Button, Grid2, Paper, Typography } from "@mui/material";
+import { useTranslation } from 'react-i18next';
 import { useQuery } from "@tanstack/react-query";
 import { axiosClient } from "../api/axios";
 import { IAnnouncement, IQuiz } from "../interfaces";
@@ -6,6 +7,7 @@ import Announcement from "../components/Announcement";
 import Quiz from "../components/Quiz";
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const { data: announcementData, isLoading: isLoadingAnnouncements } =
     useQuery<IAnnouncement[]>({
       queryKey: ["announcements"],
@@ -44,7 +46,7 @@ const Dashboard = () => {
             gutterBottom
             color="primary"
           >
-            EXAMS TIME
+            {t('dashboard.examsTime')}
           </Typography>
           <Typography
             variant="body1"
@@ -148,7 +150,7 @@ const Dashboard = () => {
             >
               <Box>
                 <Typography variant="h6" fontWeight={700}>
-                  What is due
+                  {t('dashboard.whatIsDue')}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
                   Exams are due soon

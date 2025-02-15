@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import {
   Box,
   List,
@@ -19,6 +20,7 @@ import {
 
 import { useAuth } from "../../context/AuthContext";
 import { StyledDrawer } from "./styles";
+import LanguageSwitcher from "../LanguageSwitcher";
 
 type Props = {
   mobileOpen: boolean;
@@ -26,18 +28,19 @@ type Props = {
   isMobile: boolean;
 };
 
-const menuItems = [
-  { text: "Dashboard", icon: <HomeIcon />, active: true },
-  { text: "Schedule", icon: <EventIcon /> },
-  { text: "Courses", icon: <MenuBookIcon /> },
-  { text: "Gradebook", icon: <SchoolIcon /> },
-  { text: "Performance", icon: <AssessmentIcon /> },
-  { text: "Announcement", icon: <AnnouncementIcon /> },
+const getMenuItems = (t: (key: string) => string) => [
+  { text: t('nav.dashboard'), icon: <HomeIcon />, active: true },
+  { text: t('nav.schedule'), icon: <EventIcon /> },
+  { text: t('nav.courses'), icon: <MenuBookIcon /> },
+  { text: t('nav.gradebook'), icon: <SchoolIcon /> },
+  { text: t('nav.performance'), icon: <AssessmentIcon /> },
+  { text: t('nav.announcement'), icon: <AnnouncementIcon /> },
 ];
 
 const Nav = ({ mobileOpen, handleDrawerToggle, isMobile }: Props) => {
   const { logout } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const handleLogout = () => {
     logout();
     navigate("/");
@@ -49,9 +52,12 @@ const Nav = ({ mobileOpen, handleDrawerToggle, isMobile }: Props) => {
         <Typography variant="h5" color="white" fontWeight={"700"}>
           Coligo
         </Typography>
+        <Box sx={{ mt: 2 }}>
+          <LanguageSwitcher />
+        </Box>
       </Box>
       <List>
-        {menuItems.map((item) => (
+        {getMenuItems(t).map((item) => (
           <ListItem
             data-testid={`nav-${item.text}`}
             component="div"
@@ -85,7 +91,7 @@ const Nav = ({ mobileOpen, handleDrawerToggle, isMobile }: Props) => {
           <ListItemIcon sx={{ color: "white" }}>
             <LogoutIcon />
           </ListItemIcon>
-          <ListItemText primary="Logout" onClick={handleLogout} />
+          <ListItemText primary={t('nav.logout')} onClick={handleLogout} />
         </ListItem>
       </List>
     </>

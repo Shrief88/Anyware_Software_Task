@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { AuthProvider } from "../../src/context/AuthContext";
+import { AuthProvider } from "../context/AuthContext";
 import Nav from "../components/layout/Nav";
 
 const mockNavigate = vi.fn();

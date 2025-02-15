@@ -1,0 +1,31 @@
+{
+  "nav": {
+    "dashboard": "لوحة التحكم",
+    "schedule": "الجدول",
+    "courses": "المقررات",
+    "gradebook": "سجل الدرجات",
+    "performance": "الأداء",
+    "announcement": "الإعلانات",
+    "logout": "تسجيل الخروج"
+  },
+  "dashboard": {
+    "examsTime": "موعد الامتحانات",
+    "announcements": "الإعلانات",
+    "whatIsDue": "المهام المستحقة",
+    "courseName": "المقرر: {{name}}",
+    "topic": "الموضوع: {{name}}",
+    "dueDate": "تاريخ الاستحقاق: {{date}}"
+  },
+  "auth": {
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "save": "حفظ",
+    "cancel": "إلغاء"
+  }
+}
